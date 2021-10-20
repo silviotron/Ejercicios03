@@ -366,11 +366,7 @@ public class Ejercicios03 {
 
             }
         while(nCifras > 1);
-        return "si";
-        
-
-
-        
+        return "si";                
         
     }
     
