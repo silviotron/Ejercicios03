@@ -411,7 +411,20 @@ public class Ejercicios03 {
     }
     
     public static void ejercicio11(){
-        
+        Scanner sc = new Scanner(System.in);
+        int numUsuario = -1;
+        do{
+            System.out.println("Por favor, inserte un número");
+            if(sc.hasNextInt()){
+                numUsuario = sc.nextInt();                
+            }
+            if(numUsuario < 0){
+                System.out.println("ERROR: Debe insertar un número natural.\n");
+            }
+            sc.nextLine();
+        }
+        while(numUsuario < 0);
+        System.out.println(linea(numUsuario));
     }
     public static int numDigitos(int n){
     int i = 1;
@@ -437,5 +450,16 @@ public class Ejercicios03 {
         return false;
         }    
     }
-   
+    public static String linea(int n){
+        String lista = "Lista de numeros armstrong:\n";
+        int ni = 0;
+        while(ni > n){
+            if(armstrong(ni)){
+                lista = lista + ni + "\n";
+            }
+        }
+        
+        
+        return lista;
+    }
 }
