@@ -420,5 +420,22 @@ public class Ejercicios03 {
     }
     return i;
     }
+    public static boolean armstrong(int n){
+        int ni = n;
+        int f = 0;
+        int d = numDigitos(n);
+        double na = 0;
+        for(int i = 0;i < d; i++){
+        f = n % 10;
+        na = na + Math.pow(f, d);
+        n = n / 10;
+        }
+        if(ni == na){
+            return true;
+        }
+        else{
+        return false;
+        }    
+    }
    
 }
