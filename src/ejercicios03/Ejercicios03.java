@@ -317,19 +317,38 @@ public class Ejercicios03 {
             sc.nextLine();
         }
         while(tiempo < 0);
-        System.out.printf("si invierte %,.2f€ la cantidad de dinero que tendra tras %s años es de %,.2f€\n",inversion, tiempo, calcInversion(inversion, tiempo));
+        System.out.printf("si invierte %,.2f€ la ganancia que tendra tras %s años es de %,.2f€\n",inversion, tiempo, calcInversion(inversion, tiempo)-inversion);
         
     }
-    public static double calcInversion(double i, int t){
-        while(t > 0){
-            i = i * 1.02;
-            t = t - 1;
-        }
-        return i;
+    public static double calcInversion(double inversion, int t){
+        t = t * 12;
+        for(int i = 0; i < t; i = i + 1){           
+            inversion = inversion * (1.0 + (0.02 / 12.0));
+        }        
+        return inversion;
     }
+    
     public static void ejercicio09(){
+        Scanner sc = new Scanner(System.in);
+        double numUsuario = -1;
+        do{
+            System.out.println("Introduzca un numero:");
+            if(sc.hasNextInt()){
+                numUsuario = sc.nextInt();                
+            }
+            if(numUsuario < 0){
+                System.out.println("ERROR.\n");
+            }
+            sc.nextLine();
+        }
+        while(numUsuario < 0);
+        System.out.printf("%s", palindromo(numUsuario));
+    }
+    public static String palindromo(int n){
+        for(i)
         
     }
+    
     public static void ejercicio10(){
         
     }
