@@ -322,7 +322,7 @@ public class Ejercicios03 {
     }
     public static double calcInversion(double inversion, int t){
         t = t * 12;
-        for(int i = 0; i < t; i = i + 1){           
+        for(int i = 0; i < t; i = i++){           
             inversion = inversion * (1.0 + (0.02 / 12.0));
         }        
         return inversion;
@@ -330,7 +330,7 @@ public class Ejercicios03 {
     
     public static void ejercicio09(){
         Scanner sc = new Scanner(System.in);
-        double numUsuario = -1;
+        int numUsuario = -1;
         do{
             System.out.println("Introduzca un numero:");
             if(sc.hasNextInt()){
@@ -342,10 +342,35 @@ public class Ejercicios03 {
             sc.nextLine();
         }
         while(numUsuario < 0);
-        System.out.printf("%s", palindromo(numUsuario));
+        System.out.printf("%s es palíndromo\n", palindromo(numUsuario));
     }
     public static String palindromo(int n){
-        for(i)
+        int nCifras = 0;
+        int primero;
+        int ultimo;
+        double f;
+        do{
+            nCifras = 0;
+            int n1 = n; 
+            while(n1 > 0){            
+            n1 = n1/10;
+            nCifras++;
+            }
+            f = Math.pow(10, (nCifras-1));
+            primero = n / (int)f;
+            ultimo = n % 10;
+            if(primero != ultimo){
+                return "no";
+            }
+            n = (n - primero * (int)f) / 10;
+
+            }
+        while(nCifras > 1);
+        return "si";
+        
+
+
+        
         
     }
     
