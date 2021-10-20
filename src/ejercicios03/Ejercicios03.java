@@ -412,6 +412,13 @@ public class Ejercicios03 {
     
     public static void ejercicio11(){
         
-    }    
+    }
+    public static int numDigitos(int n){
+    int i = 1;
+    while(n < 9){
+    i++;    
+    }
+    return i;
+    }
    
 }
