@@ -61,7 +61,7 @@ public class Ejercicios03 {
                     ejercicio08();
                     break;
                 case "9":
-                    ejercicio09();
+                    ejercicio09V2();
                     break;
                 case "10":
                     ejercicio10();
@@ -142,6 +142,7 @@ public class Ejercicios03 {
         }
         return resultado;
     }
+    
     public static void ejercicio03(){
                 Scanner sc = new Scanner(System.in);
         int numUsuario = -1;
@@ -167,6 +168,7 @@ public class Ejercicios03 {
         }
         return resultado;
     }
+    
     public static void ejercicio04(){
         Scanner sc = new Scanner(System.in);
         int numUsuario = -1;
@@ -194,6 +196,7 @@ public class Ejercicios03 {
         System.out.printf("%s x 10 = %s\n", numUsuario, numUsuario * 10);
         
     }
+    
     public static void ejercicio05(){
         Scanner sc = new Scanner(System.in);
         int numUsuario = -1;
@@ -230,6 +233,7 @@ public class Ejercicios03 {
             return "si";
         
     }
+    
     public static void ejercicio06(){
         Scanner sc = new Scanner(System.in);
         int numUsuario = -1;
@@ -258,6 +262,7 @@ public class Ejercicios03 {
         }
         else return 0;
     }
+    
     public static void ejercicio07(){
         Scanner sc = new Scanner(System.in);
         System.out.println("0");
@@ -369,10 +374,42 @@ public class Ejercicios03 {
         return "si";                
         
     }
+    public static void ejercicio09V2(){
+        Scanner sc = new Scanner(System.in);
+        int numUsuario = -1;
+        do{
+            System.out.println("Introduzca un numero:");
+            if(sc.hasNextInt()){
+                numUsuario = sc.nextInt();                
+            }
+            if(numUsuario < 0){
+                System.out.println("ERROR.\n");
+            }
+            sc.nextLine();
+        }
+        while(numUsuario < 0);
+        System.out.printf("%s es palíndromo\n", palindromoV2(numUsuario));        
+    }
+    public static String palindromoV2(int n){
+        int nNormal = n;
+        int nInvert = 0;
+        while(n > 0){
+            nInvert = nInvert * 10 + (n % 10);
+            n = n / 10;        
+        }
+        if(nInvert == nNormal){
+            return "si";
+        }
+        else{
+            return "no";
+        }
+        
+    }
     
     public static void ejercicio10(){
         
     }
+    
     public static void ejercicio11(){
         
     }    
