@@ -426,40 +426,40 @@ public class Ejercicios03 {
         while(numUsuario < 0);
         System.out.println(linea(numUsuario));
     }
-    public static int numDigitos(int n){
-    int i = 1;
-    while(n < 9){
-    i++;    
-    }
-    return i;
-    }
-    public static boolean armstrong(int n){
-        int ni = n;
-        int f = 0;
-        int d = numDigitos(n);
-        double na = 0;
-        for(int i = 0;i < d; i++){
-        f = n % 10;
-        na = na + Math.pow(f, d);
-        n = n / 10;
+    public static long numDigitos(long n){
+        long digitos = 0;
+        for(int i = 1; i <= n; i = i*10){
+            digitos++;
         }
-        if(ni == na){
-            return true;
-        }
-        else{
-        return false;
-        }    
+        return digitos;
+
     }
-    public static String linea(int n){
-        String lista = "Lista de numeros armstrong:\n";
-        int ni = 0;
-        while(ni > n){
-            if(armstrong(ni)){
-                lista = lista + ni + "\n";
+    public static boolean armstrong(long num){
+        long resultado = 0;
+        long numCifras = numDigitos(num);
+        for(long i = 1; i <= num; i = i*10){
+            long cifra = (num / i) % 10;
+            resultado += java.lang.Math.pow(cifra, numCifras);
+        }
+        return resultado == num;
+        
+    }
+    public static String linea(int cuantos){
+        String lista = "Lista de los " + cuantos + " primeros numeros armstrong:\n";
+        int encontrados = 0;
+        long i;
+        for(i = 1;encontrados < cuantos; i++){
+            if(armstrong(i)){
+            encontrados++;
+            String cual = "" + encontrados;
+            if(encontrados <= 9){
+                cual = " " + encontrados;
+            }
+            
+            lista = lista + cual + "º " + i + "\n";
             }
         }
-        
-        
+                
         return lista;
     }
 }
