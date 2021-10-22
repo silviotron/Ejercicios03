@@ -328,8 +328,8 @@ public class Ejercicios03 {
     }
     public static double calcInversion(double inversion, int t){
         t = t * 12;
-        for(int i = 0; i < t; i = i++){           
-            inversion = inversion * (1.0 + (0.02 / 12.0));
+        for(int i = 0; i < t; i++){           
+            inversion = inversion * (double)(1.0 + (0.02 / 12.0));
         }        
         return inversion;
     }
@@ -467,9 +467,9 @@ public class Ejercicios03 {
         System.out.printf("desde el %s/%s/%s pasaron %s días\n", dia, mes, ano, numDiasAhora(dia, mes, ano));
     }
     public static int numDiasAhora(int dia, int mes, int ano){
-        int diaAhora = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        int mesAhora = Calendar.getInstance().get(Calendar.MONTH) + 1;
-        int anoAhora = Calendar.getInstance().get(Calendar.YEAR);
+        int diaAhora = 1;//Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int mesAhora = 3;//Calendar.getInstance().get(Calendar.MONTH) + 1;
+        int anoAhora = 2004;//Calendar.getInstance().get(Calendar.YEAR);
         int diaAno = numDiaMes(mes) + dia;
         int diaAnoAhora = numDiaMes(mesAhora) + diaAhora;
         int numDias = (anoAhora - ano) * 365 + diaAnoAhora - diaAno + cuantosBisiestos(dia, mes, ano, diaAhora, mesAhora, anoAhora);
@@ -487,10 +487,10 @@ public class Ejercicios03 {
     }
     public static int cuantosBisiestos(int d, int m, int a, int dAhora, int mAhora, int aAhora){
         int cuantos = 0;
-        if(m >= 3 || (d == 29 && m == 2)){
+        if(m >= 3 && !(d == 29 && m == 2)){
            a++; 
         }
-        if(mAhora < 3 || !(dAhora == 29 && mAhora == 2)){
+        if(!(mAhora >= 3 && !(dAhora == 29 && mAhora == 2))){
            aAhora--; 
         }
         while(a <= aAhora){
