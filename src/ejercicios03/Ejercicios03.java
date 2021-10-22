@@ -5,6 +5,7 @@
  */
 package ejercicios03;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -29,9 +30,9 @@ public class Ejercicios03 {
             System.out.println("*  6. Factorial                                  *");
             System.out.println("*  7. Fibonacci                                  *");
             System.out.println("*  8. Inversión                                  *");
-            System.out.println("*  9. (opcional)                                 *");
-            System.out.println("* 10. (opcional)                                 *");
-            System.out.println("* 11. (opcional)                                 *");
+            System.out.println("*  9. Palindromo (opcional)                      *");
+            System.out.println("* 10. Numero días (opcional)                     *");
+            System.out.println("* 11. Armstrong (opcional)                       *");
             System.out.println("*  0. Salir                                      *");
             System.out.println("**************************************************");
             entradaUsuario = teclado.nextLine();
@@ -350,7 +351,7 @@ public class Ejercicios03 {
         System.out.printf("%s es palíndromo\n", palindromo(numUsuario));
     }
     public static String palindromo(int n){
-        int nCifras = 0;
+        int nCifras;
         int primero;
         int ultimo;
         double f;
@@ -407,7 +408,129 @@ public class Ejercicios03 {
     }
     
     public static void ejercicio10(){
+        Scanner sc = new Scanner(System.in);
+        int dia = -1;
+        System.out.println("Por favor, inserte su fecha de nacimiento.");
+        do{
+            System.out.println("Dia:");
+            if(sc.hasNextInt()){
+                dia = sc.nextInt();                
+            }
+            if(dia < 1 || dia > 31){
+                System.out.println("ERROR: Debe insertar un día.");
+            }
+            sc.nextLine();
+        }
+        while(dia < 1 || dia > 31);
+        int mes =  -1;
+        do{
+            System.out.println("Mes:");            
+            switch(sc.nextLine()){
+                case "1":
+                case "enero":
+                    mes = 1;
+                    break;
+                case "2":
+                case "febrero":
+                    mes = 2;
+                    break;
+                case "3":
+                case "marzo":
+                    mes = 3;
+                    break;
+                case "4":
+                case "abril":
+                    mes = 4;
+                    break;                    
+                default:
+                    mes = -1;
+                    break;                    
+            }
+            if(mes == -1){
+                System.out.println("ERROR: Debe insertar un mes.");            
+            }
+
+        }
+        while(mes == -1);
+        int ano = -1;
+        do{
+            System.out.println("Año:");
+            if(sc.hasNextInt()){
+                ano = sc.nextInt();                
+            }
+            if(ano < 1 || ano > Calendar.getInstance() .get(Calendar.YEAR)){
+                System.out.println("ERROR: Debe insertar un Año valido.");
+            }
+            sc.nextLine();
+        }
+        while(ano < 1 || ano > Calendar.getInstance() .get(Calendar.YEAR)); 
+        System.out.printf("desde el %s/%s/%s pasaron %s días\n", dia, mes, ano, numDiasAhora(dia, mes, ano));
+    }
+    public static int numDiasAhora(int dia, int mes, int ano){
+        int diaAhora = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int mesAhora = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        int anoAhora = Calendar.getInstance().get(Calendar.YEAR);
+        int diaAno = numDiaMes(mes) + dia;
+        int diaAnoAhora = numDiaMes(mesAhora) + diaAhora;
+        int numDias = (anoAhora - ano) * 365 + diaAnoAhora - diaAno + cuantosBisiestos(dia, mes, ano, diaAhora, mesAhora, anoAhora);
         
+        
+        
+        
+        return numDias;
+    }
+    public static boolean esBisiesto(int ano){
+        boolean condicion1 = (ano % 4 == 0) && !(ano % 100 == 0);
+        boolean condicion2 = (ano % 400 == 0);
+        return(condicion1 || condicion2);
+
+    }
+    public static int cuantosBisiestos(int d, int m, int a, int dAhora, int mAhora, int aAhora){
+        int cuantos = 0;
+        if(m >= 3 || (d == 29 && m == 2)){
+           a++; 
+        }
+        if(mAhora < 3 || !(dAhora == 29 && mAhora == 2)){
+           aAhora--; 
+        }
+        while(a <= aAhora){
+            if(esBisiesto(a)){
+                cuantos++;
+            }
+            a++;
+        }
+            
+        
+        return cuantos;
+    }
+    public static int numDiaMes(int mes){
+        switch(mes){
+            case 1:
+            return 0;
+            case 2:
+            return 31;
+            case 3:
+            return 59;
+            case 4:
+            return 90;
+            case 5:
+            return 120;
+            case 6:
+            return 151;
+            case 7:
+            return 181;
+            case 8:
+            return 212;
+            case 9:
+            return 243;
+            case 10:
+            return 273;
+            case 11:
+            return 304;
+            case 12:
+            return 334;                                    
+        }
+        return 0;
     }
     
     public static void ejercicio11(){
@@ -419,7 +542,7 @@ public class Ejercicios03 {
                 numUsuario = sc.nextInt();                
             }
             if(numUsuario < 0){
-                System.out.println("ERROR: Debe insertar un número natural.\n");
+                System.out.println("ERROR: Debe insertar un número natural.");
             }
             sc.nextLine();
         }
